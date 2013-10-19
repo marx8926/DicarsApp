@@ -1,20 +1,14 @@
 package clm.developers.login;
 
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
 import android.util.Log;
 import android.view.Menu;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.ArrayAdapter;
-
-import android.os.AsyncTask;
-import android.widget.TextView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import org.apache.http.HttpEntity;
@@ -26,6 +20,8 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.auth.BasicScheme;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -34,102 +30,66 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends Activity {
+import clm.services.library.JSONAct;
+
+public class PlaceActivity extends Activity {
 
     private ProgressDialog dialog;
-
-   /* List<String> list=new ArrayList<String>();
-    Spinner sp = null;
-    ArrayAdapter<String> adp = null;
-    */
-    LinearLayout linear = null;
-
-    private Dialog spin_dialog;
+    private String user;
+    private String pass;
     private Intent intent;
-    String user, pass;
+    public JSONArray jsonArray;
+    private ListView lview;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.placen);
 
         dialog = new ProgressDialog(this);
-        dialog.setMessage("Ingresando...");
-        dialog.setTitle("Progreso");
+        dialog.setMessage("Enviando..");
+        dialog.setTitle("Solicitud");
         dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         dialog.setCancelable(false);
 
-        spin_dialog = new Dialog(MainActivity.this);
-        spin_dialog.setContentView(R.layout.placen);
-        spin_dialog.setTitle("This is my custom dialog box");
+        lview = (ListView)findViewById(R.id.listTiendas);
 
-        intent = new Intent(this,PlaceActivity.class);
+        Intent i = this.getIntent();
+        user = i.getStringExtra("user");
+        pass = i.getStringExtra("pass");
 
-        /*
-        list.add("Item 1");
-        list.add("Item 2");
-        list.add("Item 3");
-        list.add("Item 4");
-        list.add("Item 5");
-
-        sp=new Spinner(MainActivity.this);
-        adp= new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1,list);
-        adp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        */
-
-        linear = (LinearLayout) findViewById(R.id.linear);
-
-        Dialog dialog = new Dialog(MainActivity.this);
-
-        dialog.setTitle("Custom Dialog");
-        dialog.setCancelable(true);
-
-
-        //dialog.show();
-
+        build("http://192.168.1.34/Dicars/web/app_dev.php/api/locales", user, pass);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.place, menu);
         return true;
     }
 
-    public void onLogin(View w)
+    public void build(String url, String username, String password)
     {
-        EditText Usuario = (EditText)this.findViewById(R.id.loginEmail);
-        EditText Pass = (EditText)this.findViewById(R.id.loginPassword);
-
-        user = Usuario.getText().toString();
-        pass = Pass.getText().toString();
-
-        Log.d("user", user);
-        Log.d("pass", pass);
-
-        connect(user, pass);
-
-    }
 
 
-    public void connect(String username, String password)
-    {
-        class HttpGetAsyncTask extends AsyncTask<String, Void, String>{
+        class HttpGetAsyncTask extends AsyncTask<String, Void, String> {
             String user;
             String pass;
+            String url;
 
             @Override
             protected String doInBackground(String... params) {
 
                 HttpClient httpClient = new DefaultHttpClient();
 
-                //construir peticion get
-                HttpGet httpGet = new HttpGet("http://192.168.1.34/Dicars/web/app_dev.php/api/login");
-
                 user = params[0];
                 pass = params[1];
+                url = params[2];
+
+                //construir peticion get
+                HttpGet httpGet = new HttpGet(url);
                 StringBuilder stringBuilder = new StringBuilder();
 
 
@@ -154,7 +114,7 @@ public class MainActivity extends Activity {
                         while ((line = reader.readLine()) != null) {
                             stringBuilder.append(line);
                         }
-                        Log.d("resp","OK");
+                        Log.d("resp", "OK");
 
                     } else {
                         Log.e("JSON", "Failed to download file");
@@ -182,21 +142,37 @@ public class MainActivity extends Activity {
 
             protected void onPostExecute(String result) {
 
-                Log.d("loginfin", "termino");
-                Log.d("loginfin",result);
+                if(result!=null)
+                {
 
+                    try {
+                        jsonArray = new JSONArray(result);
+                        Log.i("JSON", "Number of surveys in feed: " +
+                                jsonArray.length());
+
+                        loadlist(jsonArray);
+
+                        //---print out the content of the json feed---
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+    				/*
+    				Toast.makeText(getBaseContext(), jsonObject.getString("appeId") +
+    						" - " + jsonObject.getString("inputTime"),
+    						Toast.LENGTH_SHORT).show();
+    				*/
+
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                else
+                {
+                    jsonArray = new JSONArray();
+                    Log.i("JSON", "Number of elements: " + jsonArray.length());
+                }
                 dialog.dismiss();
-
-                Toast.makeText(getBaseContext(),"Ingreso ",Toast.LENGTH_LONG).show();
-                /*
-                sp.setAdapteandroid.widget.Toast Toast;r(adp);
-                linear.addView(sp);
-                */
-
-                intent.putExtra("user", user);
-                intent.putExtra("pass", pass);
-
-                startActivity(intent);
 
             }
 
@@ -205,6 +181,33 @@ public class MainActivity extends Activity {
         HttpGetAsyncTask httpGetAsyncTask = new HttpGetAsyncTask();
         // Parameter we pass in the execute() method is relate to the first generic type of the AsyncTask
         // We are passing the connectWithHttpGet() method arguments to that
-        httpGetAsyncTask.execute(username, password);
+        httpGetAsyncTask.execute(username, password, url);
+
     }
+
+    public void loadlist(JSONArray jsonArray)
+    {
+        List<String> list = new ArrayList<String>();
+
+        try{
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                String element = jsonObject.getString("cLocalDesc");
+                list.add(element);
+
+            }
+
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                    android.R.layout.simple_list_item_checked, list);
+            lview.setAdapter(adapter);
+
+
+
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+    }
+    
 }
