@@ -41,10 +41,12 @@
         android:layout_width="fill_parent"
         android:layout_height="393dp"
         android:id="@+id/listTiendas"
-        android:choiceMode="multipleChoiceModal"
+        android:choiceMode="singleChoice"
+        android:onClick="onItemSelect"
         android:clickable="true"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:longClickable="false" />
 
 
 

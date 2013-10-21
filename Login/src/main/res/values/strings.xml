@@ -20,5 +20,17 @@
 
     <string name="title_activity_place">PlaceActivity</string>
     <string name="title_activity_menu">menuActivity</string>
+    <string name="strUsuario">Usuario</string>
+    <string name="strClave">Clave</string>
+    <string name="strAceptar">Aceptar</string>
+    <string name="title_activity_menu_venta_cobranza">Menu Venta Cobranza</string>
+    <string name="venta">Venta</string>
+    <string name="cobranza">Cobranza</string>
+    <string name="title_activity_productos_lista">Lista de Productos</string>
+    <string name="title_activity_agregar_venta_contado">Agregar Venta Contado</string>
+    <string name="cantidad">Cantidad:</string>
+    <string name="agregar">Agregar</string>
+    <string name="title_activity_registrar_venta">Registro de Venta</string>
+    <string name="ver">Ver</string>
 
 </resources>

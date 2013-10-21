@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -55,9 +57,30 @@ public class PlaceActivity extends Activity {
 
         lview = (ListView)findViewById(R.id.listTiendas);
 
+
         Intent i = this.getIntent();
         user = i.getStringExtra("user");
         pass = i.getStringExtra("pass");
+
+        intent = new Intent(this,MenuActivity.class);
+        intent.putExtra("user",user);
+        intent.putExtra("pass", pass);
+
+        lview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                // ListView Clicked item index
+                int itemPosition     = position;
+
+                // ListView Clicked item value
+                String  itemValue    = (String) lview.getItemAtPosition(position);
+                intent.putExtra("tienda",itemValue);
+
+                startActivity(intent);
+
+            }
+        });
 
         build("http://192.168.1.34/Dicars/web/app_dev.php/api/locales", user, pass);
     }
@@ -198,7 +221,7 @@ public class PlaceActivity extends Activity {
             }
 
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                    android.R.layout.simple_list_item_checked, list);
+                    android.R.layout.simple_list_item_single_choice, list);
             lview.setAdapter(adapter);
 
 
@@ -207,6 +230,11 @@ public class PlaceActivity extends Activity {
         {
             e.printStackTrace();
         }
+
+    }
+
+    public void onItemSelect()
+    {
 
     }
     
