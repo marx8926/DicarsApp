@@ -1,0 +1,58 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ClienteActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lista de Clientes"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cliente"
+            />
+        <EditText
+
+            android:layout_width="198dp"
+            android:layout_height="wrap_content" />
+        <Button
+            android:text = "Buscar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <GridView
+        android:layout_width="fill_parent"
+        android:layout_height="281dp"
+        android:numColumns="5"
+        android:id="@+id/gridClientes" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text = "Cerrar"
+            android:id="+@id/btnCerrar"/>
+        <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text = "Guardar"
+            android:id = "+@id/btnGuardar"/>
+
+    </LinearLayout>
+
+</LinearLayout>

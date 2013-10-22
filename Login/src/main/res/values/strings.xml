@@ -32,5 +32,8 @@
     <string name="agregar">Agregar</string>
     <string name="title_activity_registrar_venta">Registro de Venta</string>
     <string name="ver">Ver</string>
+    <string name="title_activity_lugar">LugarActivity</string>
+    <string name="title_activity_cliente">ClienteActivity</string>
+    <string name="title_activity_cuenta">CuentaActivity</string>
 
 </resources>

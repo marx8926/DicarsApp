@@ -13,18 +13,20 @@ import java.util.List;
 public class ProductosListaActivity extends ListActivity {
     private SelectionAdapter mAdapter;
     List<String> items = new ArrayList<String>();
+    Intent i = this.getIntent();
+    String user, pass;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
 
-        String arg0 = "P001"+"DAYIZZ"+"70"+"15";
-        items.add(arg0);
-        items.add("Quick");
-        items.add("Chiel");
-        items.add("Briki");
+        user = i.getStringExtra("user");
+        pass = i.getStringExtra("pass");
 
-        mAdapter = new SelectionAdapter(this, R.layout.productos_lista, R.id.tvListaProd, items);
+
+
+        mAdapter = new SelectionAdapter(this, R.layout.productos_lista, R.id.gridProductos, items);
         setListAdapter(mAdapter);
     }
 

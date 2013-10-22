@@ -32,6 +32,34 @@
             android:name="clm.developers.login.MenuActivity"
             android:label="@string/title_activity_menu" >
         </activity>
+        <activity
+            android:name="clm.developers.login.MenuVentaCobranzaActivity"
+            android:label="@string/title_activity_menu_venta_cobranza" >
+        </activity>
+        <activity
+            android:name="clm.developers.login.ProductosListaActivity"
+            android:label="@string/title_activity_productos_lista" >
+        </activity>
+        <activity
+            android:name="clm.developers.login.AgregarVentaContadoActivity"
+            android:label="@string/title_activity_agregar_venta_contado" >
+        </activity>
+        <activity
+            android:name="clm.developers.login.RegistrarVentaActivity"
+            android:label="@string/title_activity_registrar_venta" >
+        </activity>
+        <activity
+            android:name="clm.developers.login.LugarActivity"
+            android:label="@string/title_activity_lugar" >
+        </activity>
+        <activity
+            android:name="clm.developers.cobranza.ClienteActivity"
+            android:label="@string/title_activity_cliente" >
+        </activity>
+        <activity
+            android:name="clm.developers.login.CuentaActivity"
+            android:label="@string/title_activity_cuenta" >
+        </activity>
     </application>
 
 </manifest>
