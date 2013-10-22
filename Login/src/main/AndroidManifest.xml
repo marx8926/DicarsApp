@@ -60,6 +60,14 @@
             android:name="clm.developers.login.CuentaActivity"
             android:label="@string/title_activity_cuenta" >
         </activity>
+        <activity
+            android:name="clm.developers.login.NClienteActivity"
+            android:label="@string/title_activity_ncliente" >
+        </activity>
+        <activity
+            android:name="clm.developers.login.ClientepagoActivity"
+            android:label="@string/title_activity_clientepago" >
+        </activity>
     </application>
 
 </manifest>

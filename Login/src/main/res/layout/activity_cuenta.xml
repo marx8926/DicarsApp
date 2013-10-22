@@ -44,7 +44,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:numColumns="4"
-        android:id = "+@id/gridPagar"
+        android:id = "+@id/gridVPagar"
         >
 
     </GridView>

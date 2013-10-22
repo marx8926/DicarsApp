@@ -10,6 +10,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class ProductosListaActivity extends ListActivity {
     private SelectionAdapter mAdapter;
     List<String> items = new ArrayList<String>();

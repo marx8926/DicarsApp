@@ -47,11 +47,11 @@
         <Button android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text = "Cerrar"
-            android:id="+@id/btnCerrar"/>
+            android:id="@+id/botonCerrar"/>
         <Button android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text = "Guardar"
-            android:id = "+@id/btnGuardar"/>
+            android:id = "@+id/botonGuardar"/>
 
     </LinearLayout>
 
