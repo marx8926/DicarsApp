@@ -2,21 +2,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:orientation="vertical"
-    tools:context=".CuentaActivity" >
+    tools:context=".SearchActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Por pagar"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:paddingBottom="10dp"
-
-
-        />
-
+        android:text="Lista de Productos"
+        android:id="@+id/textProd"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true" />
     <LinearLayout
-
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         >
@@ -26,29 +24,31 @@
             android:layout_height="wrap_content"
             android:text="A cuenta"/>
         <EditText
-            android:layout_width="82dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-         />
+            android:layout_weight="100"
+            />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:text="Pagar"
-            android:id="@+id/btnPagar" />
-
-
+            android:text="Buscar"
+            android:id="@+id/btnBuscar" />
     </LinearLayout>
 
+
     <GridView
+
+        android:numColumns="4"
+        android:id="@+id/gridProductos"
+
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:numColumns="4"
-        android:id = "@+id/gridVPagar"
+
+        android:stretchMode="columnWidth"
+        android:gravity="center"
         >
-
     </GridView>
-
 
 
 </LinearLayout>

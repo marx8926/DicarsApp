@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="10"
+        android:minSdkVersion="11"
         android:targetSdkVersion="18" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -18,11 +18,7 @@
         <activity
             android:name="clm.developers.login.MainActivity"
             android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="clm.developers.login.PlaceActivity"
@@ -57,16 +53,41 @@
             android:label="@string/title_activity_cliente" >
         </activity>
         <activity
-            android:name="clm.developers.login.CuentaActivity"
+            android:name="clm.developers.cobranza.CuentaActivity"
             android:label="@string/title_activity_cuenta" >
         </activity>
         <activity
-            android:name="clm.developers.login.NClienteActivity"
-            android:label="@string/title_activity_ncliente" >
-        </activity>
-        <activity
-            android:name="clm.developers.login.ClientepagoActivity"
+            android:name="clm.developers.cobranza.ClientepagoActivity"
             android:label="@string/title_activity_clientepago" >
+        </activity>
+
+        <meta-data
+            android:name="android.app.default_searchable"
+            android:value="clm.developers.library.SearchActivity" />
+
+        <activity
+            android:name="clm.developers.library.SearchActivity"
+            android:label="@string/title_activity_search" >
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+
+        <activity
+            android:name="clm.developers.cobranza.NuevocActivity"
+            android:label="@string/title_activity_nuevoc" >
         </activity>
     </application>
 

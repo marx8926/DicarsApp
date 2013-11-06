@@ -35,7 +35,10 @@
     <string name="title_activity_lugar">LugarActivity</string>
     <string name="title_activity_cliente">ClienteActivity</string>
     <string name="title_activity_cuenta">CuentaActivity</string>
-    <string name="title_activity_ncliente">NClienteActivity</string>
+    <string name="title_activity_ncliente">NclienteActivity</string>
     <string name="title_activity_clientepago">ClientepagoActivity</string>
+    <string name="title_activity_searchable">SearchableActivity</string>
+    <string name="title_activity_search">SearchActivity</string>
+    <string name="title_activity_nuevoc">NuevocActivity</string>
 
 </resources>

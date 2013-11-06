@@ -3,7 +3,7 @@ package clm.developers.cobranza;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
-
+import clm.developers.login.R;
 
 
 public class ClienteActivity extends Activity {

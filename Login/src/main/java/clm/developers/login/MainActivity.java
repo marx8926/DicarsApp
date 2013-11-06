@@ -1,20 +1,16 @@
 package clm.developers.login;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.app.Activity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
-import android.widget.ArrayAdapter;
-
-import android.os.AsyncTask;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.apache.http.HttpEntity;
@@ -31,8 +27,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends Activity {
 
@@ -123,7 +117,7 @@ public class MainActivity extends Activity {
                 HttpClient httpClient = new DefaultHttpClient();
 
                 //construir peticion get
-                HttpGet httpGet = new HttpGet("http://192.168.0.91/Dicars/web/app_dev.php/api/login");
+                HttpGet httpGet = new HttpGet("http://192.168.0.12/Dicars/web/app_dev.php/api/login");
 
                 user = params[0];
                 pass = params[1];

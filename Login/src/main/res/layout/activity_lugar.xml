@@ -16,15 +16,7 @@
         android:textSize="20dip"
         />
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left|center_vertical"
-        android:id="@+id/linearLayout"
-        android:layout_above="@+id/listTlugares"
-        android:layout_centerHorizontal="true">
 
-    </LinearLayout>
 
     <ListView
         android:layout_width="fill_parent"

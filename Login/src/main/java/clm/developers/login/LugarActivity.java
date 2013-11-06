@@ -79,7 +79,7 @@ public class LugarActivity extends Activity {
             }
         });
 
-        build("http://192.168.0.91/Dicars/web/app_dev.php/api/locales", user, pass);
+        build("http://192.168.0.12/Dicars/web/app_dev.php/api/locales", user, pass);
     }
 
 
